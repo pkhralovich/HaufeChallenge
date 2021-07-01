@@ -1,0 +1,11 @@
+.loading {
+    width: 72px;
+    height: auto;
+    margin-bottom: var(--spacing-medium);
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

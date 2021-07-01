@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+
+:root {
+  --accent-color: #97CE4C;
+  --accent-color-2: #E89AC7;
+  --accent-color-3: #F0E14A;
+
+  --background-light: #fff;
+
+  --font-color: #0D2232;
+  --font-color-hint: #a3a3a3;
+  --font-family: "Source Sans Pro",Sans-serif;
+  
+  --font-small: 16px;
+  --font-medium: 20px;
+  --font-large: 30px;
+
+  --spacing-small: 10px;
+  --spacing-medium: 20px;
+  --spacing-large: 40px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  color: var(--font-color);
+  font-family: var(--font-family);
+  font-size: var(--font-small);
+
+  background-image: url("https://assets.website-files.com/605b6e7bae7e3dc5ee0bdff5/605b6e7bae7e3daef80be0ad_shape-hero-bg.svg");
+  background-position: 50% 600px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+p {
+  margin: 0;
+}
+
+input {
+  width: calc(100% - 12px);
+  margin-bottom: var(--spacing-medium);
+  padding: 10px 5px;
+
+  border: 1px solid var(--font-color-hint);
+
+  font-size: var(--font-small);
+  font-family: var(--font-family);
+}
+
+input:focus {
+  border: 1px solid var(--accent-color);
+  outline: none;
+  transition: border .3s;
+}
+
+::placeholder { 
+  color: var(--accent-color);
+  opacity: 0.5;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+button {
+  width: 100%;
+  margin: 0;
+  padding: var(--spacing-small);
+
+  color: #fff;
+  background-color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.link {
+  width: auto;
+  padding: 0;
+
+  font-size: var(--font-small);
+  font-family: var(--font-family);
+  color: var(--accent-color);
+
+  border: none;
+  background: none;
+
+  font-weight: normal;
+  text-transform: unset;
+
+  margin-top: var(--spacing-small);
+  text-decoration: none;
+}
+
+button:hover {
+  color: var(--accent-color);
+  background-color: #fff;
+  transition: background-color .3s;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.center-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

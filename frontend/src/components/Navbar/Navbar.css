@@ -1,0 +1,40 @@
+.navbar {
+    display: flex;
+    flex-direction: horizontal;
+
+    background-color: #fff;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
+}
+
+.nav-item {
+    padding: var(--spacing-small);
+    margin: var(--spacing-small) var(--spacing-medium);
+
+    color: var(--font-color-hint);
+
+    border-bottom: 2px solid transparent;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    text-decoration: none;
+}
+
+.nav-clickable {
+    cursor: pointer;
+    color: var(--font-color);
+}
+
+.nav-clickable:hover {
+    border-bottom: 2px solid var(--accent-color);
+    transition: border-color .2s;
+}
+
+.nav-spacing {
+    flex-grow: 1;
+}
+
+.navbar .home > img {
+    margin-right: var(--spacing-small);
+}

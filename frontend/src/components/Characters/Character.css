@@ -1,0 +1,27 @@
+.character-name {
+    font-weight: bolder;
+    font-size: var(--font-large);
+    margin-bottom: var(--spacing-small);
+}
+
+.character-label {
+    color: var(--font-color-hint);
+    font-size: var(--font-small);
+    width: auto;
+}
+
+.character-value {
+    font-size: var(--font-small);
+    margin-bottom: var(--spacing-small);
+}
+
+.character-value:last-child {
+    margin-bottom: 0;
+}
+
+.avatar {
+    height: auto;
+    width: auto;
+
+    border-radius: 8px 0 0 8px;
+}

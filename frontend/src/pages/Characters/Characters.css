@@ -1,0 +1,9 @@
+.characters-list {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    grid-row-gap: var(--spacing-medium);
+    grid-column-gap: var(--spacing-medium);
+
+    padding: var(--spacing-medium);
+    justify-content: center;
+}

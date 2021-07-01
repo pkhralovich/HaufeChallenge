@@ -1,0 +1,26 @@
+.content {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.content img {
+    width: 30vmin;
+    height: 30vmin;
+
+    display: block;
+    /*margin: 0 auto;*/
+
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
+.content h1, .content h2{
+    text-align: center;
+    margin: 0;
+    margin-top: var(--spacing-medium);
+}
