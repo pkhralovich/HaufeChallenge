@@ -1,9 +1,9 @@
 .characters-list {
     display: grid;
-    grid-template-columns: repeat(4, max-content);
+    grid-template-columns: repeat(4, 1fr);
     grid-row-gap: var(--spacing-medium);
     grid-column-gap: var(--spacing-medium);
 
-    padding: var(--spacing-medium);
+    padding: var(--spacing-large);
     justify-content: center;
 }

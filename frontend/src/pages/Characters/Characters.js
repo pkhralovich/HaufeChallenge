@@ -39,11 +39,11 @@ function Characters() {
         }
     }
 
-    function renderContent() {
-        useEffect(() => {    
-            service.get(1, onCharactersSuccess, onCharactersError);
-        });
+    useEffect(() => {    
+        service.get(1, onCharactersSuccess, onCharactersError);
+    }, []);
 
+    function renderContent() {
         if (loading) return <Loading/>;
         else {
             let items = [];

@@ -16,13 +16,18 @@ function CharacterDetail(props) {
     }
 
     function getStatusIcon(status) {
-        if (status && status instanceof String) {
+        if (status) {
             switch(status.toUpperCase()) {
                 case CHAR_STATUS.ALIVE: return aliveIcon;
                 case CHAR_STATUS.DEAD: return deadIcon;
                 default: return unknownIcon;
             }
         } else return unknownIcon;
+    }
+
+    function getFavouriteText() {
+        if (props.favourite) return "Remove from favs";
+        else return "Add to favs";
     }
 
     return (
@@ -32,7 +37,7 @@ function CharacterDetail(props) {
                 <img className="avatar" src={props.character.image} alt={props.character.name + " image"}></img>
                 <div className="detail-info">
                     <p className="character-name">{props.character.name}</p>
-
+                    
                     <p className="character-label">Status:</p>
                     <div className="character-status">
                         <p className="character-value">{props.character.status}</p>
@@ -40,7 +45,7 @@ function CharacterDetail(props) {
                     </div>
                     
                     <p className="character-label">Variety:</p>
-                    <p className="character-value">{props.character.type}</p>
+                    <p className="character-value">{props.character.species}</p>
 
                     <p className="character-label">Gender:</p>
                     <p className="character-value">{props.character.gender}</p>
@@ -50,6 +55,10 @@ function CharacterDetail(props) {
                     
                     <p className="character-label">Last known location:</p>
                     <p className="character-value">{props.character.location}</p>
+
+                    <button class="like-button">
+                        {getFavouriteText()}
+                    </button>
                 </div>
             </div>
         </div>

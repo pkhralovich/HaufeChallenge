@@ -128,3 +128,8 @@ button:hover {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}

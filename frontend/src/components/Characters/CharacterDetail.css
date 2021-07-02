@@ -15,6 +15,7 @@
     border-radius: 8px;
 
     max-width: 90%;
+    min-width: 25%;
     max-height: 90%;
 
     display: flex;
@@ -59,4 +60,14 @@
     width: var(--font-medium);
     height: var(--font-medium);
     margin-left: var(--spacing-small);
+}
+
+.detail-container .like-button {
+    margin-top: var(--spacing-medium);
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
 }
