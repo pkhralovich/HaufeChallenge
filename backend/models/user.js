@@ -42,7 +42,13 @@ User.createValidation = function() {
                     .alphanum()
                     .min(8)
                     .max(50)
+                    .required(),
+        confirmation: Joi.string()
+                    .alphanum()
+                    .min(8)
+                    .max(50)
                     .required()
+                    .equal(Joi.ref('password'))
     });
 }
 

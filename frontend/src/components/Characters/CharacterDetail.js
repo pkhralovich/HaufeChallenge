@@ -28,7 +28,7 @@ function CharacterDetail(props) {
     return (
         <div className="detail-container">
             <div className="detail-content center-absolute">
-                <img className="close-button" src={closeIcon}></img>
+                <img className="close-button" src={closeIcon} onClick={props.onClickClose}></img>
                 <img className="avatar" src={props.character.image} alt={props.character.name + " image"}></img>
                 <div className="detail-info">
                     <p className="character-name">{props.character.name}</p>

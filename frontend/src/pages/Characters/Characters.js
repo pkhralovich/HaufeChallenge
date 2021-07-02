@@ -7,56 +7,53 @@ import CharacterItem from '../../components/Characters/CharacterItem.js';
 import CharacterDetail from '../../components/Characters/CharacterDetail.js';
 import Loading from '../../components/Loading/Loading.js';
 
+/*Services*/
+import CharactersService from '../../services/CharactersService';
 import "./Characters.css";
 
 function Characters() {
-    let character = {
-        id: 1,
-        name: "Pavel",
-        status: "Alive",
-        type: "Human",
-        gender: "Male",
-        origin: "Earth 1",
-        location: "Earth 2",
-        image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-    };
+    const service = new CharactersService();
 
-    let aux = [
-        character,
-        character,
-        character,
-        character,
-        character,
-        character,
-        character,
-        character,
-        character,
-        character,
-        character,
-        character,
-        character,
-        character,
-        character,
-        character,
-        character,
-        character,
-        character,
-        character,
-        character
-    ] 
-
-    const [characters, setCharacters] = useState(aux);
+    const [characters, setCharacters] = useState([]);
     const [selectedCharacter, setSelectedCharacter] = useState(undefined);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    function onCharactersSuccess(response) {
+        setLoading(false);
+        switch(response.status) {
+            case 200: {
+                setCharacters(response.data.results);
+                break;
+            }
+            default: return;
+        }
+    }
+
+    function onCharactersError(error) {
+
+    }
+
+    function onSelect(character) {
+        return () => {
+            setSelectedCharacter(character);
+        }
+    }
 
     function renderContent() {
+        useEffect(() => {    
+            service.get(1, onCharactersSuccess, onCharactersError);
+        });
+
         if (loading) return <Loading/>;
         else {
             let items = [];
-            characters.map((character, index) => items.push(<CharacterItem key={index} character={character}/>));
+            characters.map((character, index) => {
+                let component = <CharacterItem key={index} character={character} onClickItem={onSelect(character)}/>;
+                items.push(component);
+            });
 
             let detail = null;
-            if (selectedCharacter) detail = <CharacterDetail character={selectedCharacter}/>;
+            if (selectedCharacter) detail = <CharacterDetail character={selectedCharacter} onClickClose={onSelect(undefined)}/>;
             return (
                 <div>
                     <div className="characters-list">

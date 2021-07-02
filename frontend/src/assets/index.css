@@ -40,7 +40,6 @@ p {
 
 input {
   width: calc(100% - 12px);
-  margin-bottom: var(--spacing-medium);
   padding: 10px 5px;
 
   border: 1px solid var(--font-color-hint);
@@ -55,8 +54,24 @@ input:focus {
   transition: border .3s;
 }
 
-::placeholder { 
+input.error {
+  border: 1px solid var(--accent-color-2);
+}
+
+.input-error {
+  margin-bottom: var(--spacing-small);
+  font-size: var(--font-small);
+  color: var(--accent-color-2);
+  min-height: var(--font-small);
+}
+
+input::placeholder { 
   color: var(--accent-color);
+  opacity: 0.5;
+}
+
+input.error::placeholder {
+  color: var(--accent-color-2);
   opacity: 0.5;
 }
 

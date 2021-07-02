@@ -5,7 +5,7 @@ import "./CharacterItem.css";
 
 function CharacterItem(props) {
     return (
-        <div className="character-item">
+        <div className="character-item" onClick={props.onClickItem}>
             <img className="avatar" src={props.character.image} alt={props.character.name + " image"}></img>
             <div className="character-info">
                 <p className="character-name">{props.character.name}</p>

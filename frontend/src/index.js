@@ -2,6 +2,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import dotenv from 'dotenv';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,6 +17,8 @@ import Characters from './pages/Characters/Characters.js';
 
 /*Others*/
 import './assets/index.css';
+
+dotenv.config();
 
 ReactDOM.render(
   <React.StrictMode>

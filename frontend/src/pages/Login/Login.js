@@ -9,17 +9,9 @@ import SignupForm from '../../components/SignupForm/SignupForm.js';
 import './Login.css';
 
 function App(props) {
-  function handleLogin() {
-    //TODO: Service call
-  }
-
-  function handleSignup() {
-    //TODO: Service call
-  }
-
   let form;
-  if(props.showLogin) form = <LoginForm onClickLogin={handleLogin}/>;
-  else form = <SignupForm onClickSignup={handleSignup}/>;
+  if(props.showLogin) form = <LoginForm />;
+  else form = <SignupForm/>;
 
   return (
     <div>

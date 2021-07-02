@@ -1,6 +1,7 @@
 //Require external tools
 const express = require("express");
-var dotenv = require("dotenv");
+const dotenv = require("dotenv");
+const cors = require("cors");
 
 //Configure environment variables
 dotenv.config();
@@ -10,6 +11,7 @@ const app = express();
 
 //Add external tools to the server
 app.use(express.json());
+app.use(cors());
 
 //Import available routes
 let user_routes = require("./routes/user.js");
