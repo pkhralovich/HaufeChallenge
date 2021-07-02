@@ -7,3 +7,24 @@
     padding: var(--spacing-large);
     justify-content: center;
 }
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+    
+    margin-bottom: var(--spacing-large);
+}
+
+.pagination button {
+    width: auto;
+    border-radius: 25%;
+}
+
+.pagination p {
+    margin-left: var(--spacing-medium);
+    margin-right: var(--spacing-medium);
+    font-weight: bolder;
+ }

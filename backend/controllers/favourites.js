@@ -29,7 +29,7 @@ async function create(req, res) {
         } else res.status(401).send();
     } catch (error) {
         if (error?.original?.errno === DUPLICATED_RECORD) 
-            response.status(409).send();
+            res.status(409).send();
         else response.unhandledError(error, res);
     }
 }

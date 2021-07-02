@@ -42,7 +42,7 @@ async function getCharacters(req, res) {
 
                 //Add favourites information to result
                 records.forEach(record => {
-                    let character = data.results.find(item => item.id === record.id);
+                    let character = data.results.find(char => char.id === record.character);
                     if (character) character.favourite = record.id;
                 });
             }  

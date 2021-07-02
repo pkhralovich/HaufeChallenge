@@ -8,7 +8,7 @@ import nonFavIcon from "../../assets/images/nonFavourite.svg";
 
 function CharacterItem(props) {
     function getFavouriteIcon() {
-        if (props.favourite) return favIcon;
+        if (props.character.favourite) return favIcon;
         else return nonFavIcon;
     }
 
@@ -26,7 +26,7 @@ function CharacterItem(props) {
                 <p className="character-label">Last known location:</p>
                 <p className="character-value">{props.character.location}</p>
 
-                <img className="fav-icon" src={getFavouriteIcon()}></img>
+                <img className="fav-icon" src={getFavouriteIcon()} alt="Fav indicator"></img>
             </div>
         </div>
     );

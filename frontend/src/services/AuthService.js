@@ -3,8 +3,6 @@ import axios from "axios";
 import config from "./config";
 
 export default class UserService {
-    constructor() { }
-
     getEndpoint(path) {
         let endpoint = "http://" + config.api_host + ":" + config.api_port;
         if (path) endpoint += path;

@@ -1,5 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import queryString from "query-string";
 
 /* Components */
 import Navbar from '../../components/Navbar/Navbar.js';
@@ -9,28 +11,50 @@ import Loading from '../../components/Loading/Loading.js';
 
 /*Services*/
 import CharactersService from '../../services/CharactersService';
+
+/*Others*/
 import "./Characters.css";
 
-function Characters() {
+function Characters(props) {
+    const history = useHistory();
     const service = new CharactersService();
 
     const [characters, setCharacters] = useState([]);
+    const [pages, setPages] = useState({});
+    const [currentPage, setCurrentPage] = useState(getPage());
+
     const [selectedCharacter, setSelectedCharacter] = useState(undefined);
     const [loading, setLoading] = useState(true);
 
+    function getPage() {
+        const query = queryString.parse(props.location.search);
+        
+        let page = parseInt(query.page, 0);
+        if (!page) page = 1;  
+
+        return page;
+    }
+
     function onCharactersSuccess(response) {
-        setLoading(false);
         switch(response.status) {
             case 200: {
                 setCharacters(response.data.results);
+                setPages(response.data.info);
                 break;
             }
-            default: return;
+            case 401: {
+                localStorage.clear();
+                history.push("/login");
+                break;
+            }
+            default: onCharactersError();
         }
+
+        setLoading(false);
     }
 
-    function onCharactersError(error) {
-
+    function onCharactersError() {
+        history.push("/notFound");
     }
 
     function onSelect(character) {
@@ -39,16 +63,17 @@ function Characters() {
         }
     }
 
-    useEffect(() => {    
-        service.get(1, onCharactersSuccess, onCharactersError);
-    }, []);
+    useEffect(() => {
+        history.push("/characters?page=" + currentPage);
+        service.get(currentPage, onCharactersSuccess, onCharactersError);
+    }, [currentPage]);
 
     function renderContent() {
         if (loading) return <Loading/>;
         else {
             let items = [];
-            characters.map((character, index) => {
-                let component = <CharacterItem key={index} character={character} onClickItem={onSelect(character)}/>;
+            characters.forEach((character) => {
+                let component = <CharacterItem key={character.id} character={character} onClickItem={onSelect(character)}/>;
                 items.push(component);
             });
 
@@ -65,10 +90,39 @@ function Characters() {
         }
     }
 
+    function moveNext() {
+        setLoading(true);
+        setCurrentPage(currentPage+1);
+    }
+
+    function movePrev() {
+        setLoading(true);
+        setCurrentPage(currentPage-1);
+    }
+
+    function renderPagination() {
+        if (!pages || !currentPage || loading) return null;
+
+        let buttonNext = null;
+        if (pages.next) buttonNext = <button onClick={moveNext}>Next</button>
+
+        let buttonPrev = null;
+        if (pages.prev) buttonPrev = <button onClick={movePrev}>Prev</button>
+
+        return (
+            <div className="pagination">
+                 {buttonPrev}
+                <p>{currentPage}</p>
+                {buttonNext}
+            </div>
+        )
+    }
+
     return (
         <div>
             <Navbar></Navbar>
             {renderContent()}
+            {renderPagination()}
         </div>
     );
 }

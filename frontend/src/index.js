@@ -1,8 +1,7 @@
 /*External or react libraries*/
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import dotenv from 'dotenv';
+import { Provider } from "react-redux";
 
 import {
   BrowserRouter as Router,
@@ -15,21 +14,24 @@ import Login from './pages/Login/Login.js';
 import NotFound from './pages/NotFound/NotFound.js';
 import Characters from './pages/Characters/Characters.js';
 
+/*State*/
+import store from './services/State';
+
 /*Others*/
 import './assets/index.css';
 
-dotenv.config();
-
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <Switch>
-        <Route exact path={["/", "/login"]} render={(props) => (<Login {...props} showLogin={true}/>)}/>
-        <Route path="/signup" render={(props) => (<Login {...props} showLogin={false}/>)} />
-        <Route path="/characters" component={Characters} />
-        <Route component={NotFound}/>
-      </Switch>
-    </Router>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <Router>
+        <Switch>
+          <Route exact path={["/", "/login"]} render={(props) => (<Login {...props} showLogin={true}/>)}/>
+          <Route path="/signup" render={(props) => (<Login {...props} showLogin={false}/>)} />
+          <Route path="/characters" component={Characters} />
+          <Route component={NotFound}/>
+        </Switch>
+      </Router>
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );

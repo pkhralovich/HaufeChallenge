@@ -82,7 +82,7 @@ function SignupForm(props) {
 
     return (
         <div className="signup-container center-absolute">
-            <img src={signupImage}/>
+            <img src={signupImage} alt="Morty"/>
             <h2>Sign up</h2>
             <form className="signup-form">
             <label htmlFor="input-username">Username</label>

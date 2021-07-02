@@ -6,7 +6,7 @@ import './Loading.css';
 function Loading() {
     return (
         <div className="loading-container center-absolute">
-            <img src={loadingImage} className="loading"/>
+            <img src={loadingImage} className="loading" alt="Loading animation"/>
             <p>The bits are flowing slowly today...</p>
         </div>
     );
