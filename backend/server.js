@@ -20,9 +20,18 @@ const API_PATH = process.env.API_PATH || "";
 app.use(API_PATH, user_routes);
 app.use(API_PATH, character_routes);
 
+//Import database
+const db = require('./utilities/database');
+
 //Launch the server
 if (!process.env.PORT) throw "Unable to run server. A port must be provided!";
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${process.env.PORT}.`);
+app.listen(process.env.PORT, async () => {
+  try {
+    await db.authenticate();
+    console.log(`Server is running on port ${process.env.PORT}.`);
+  }
+  catch (error) {
+    console.log("Unable to connect to the database: ", error);
+  }
 });

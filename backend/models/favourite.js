@@ -1,19 +1,34 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const User = require("./user");
 
-const User = sequelize.define("User", {
+const { DataTypes } = require('sequelize');
+const sequelize = require("../utilities/database");
+
+const Favourite = sequelize.define("Favourite", {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
         autoIncrement: true
     },
-    username: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
+    user: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: false,
+    character: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
-}, {});
+}, {
+    updatedAt: false,
+    createdAt: false
+});
+
+Favourite.findByIds = function(ids) {
+    return this.findAll({
+        where: {
+            id: ids
+        }
+    });
+}
+
+module.exports = Favourite;

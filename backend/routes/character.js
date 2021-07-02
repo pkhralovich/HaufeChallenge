@@ -1,16 +1,13 @@
 var express = require("express");
 var router = express.Router();
 
-router.post("/character/:id/favourite", function(req, res) {
-    res.send("<h1>Hello world 3</h1>");
-});
+var authentication = require("../utilities/authentication");
 
-router.delete("/character/:id/favourite", function(req, res) {
-    res.send("<h1>Hello world 4</h1>");
-});
+var favouriteController = require("../controllers/favourites");
+var characterController = require("../controllers/characters");
 
-router.get("/characters", function(req,res) {
-    res.send("<h1>Hello world 5</h1>");
-});
+router.post("/character/:id/favourite", authentication.validateToken, favouriteController.create);
+router.delete("/character/favourite/:id", authentication.validateToken, favouriteController.remove);
+router.get("/characters", authentication.validateToken, characterController.getCharacters);
 
 module.exports = router;
