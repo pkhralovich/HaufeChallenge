@@ -10,7 +10,7 @@ import loginImage from '../../assets/images/form-header.png';
 function LoginForm(props) {
     return (
         <div className="login-container center-absolute">
-            <img src={loginImage}/>
+            <img src={loginImage} alt="Morty "/>
             <h2>Login</h2>
             <form className="login-form">
                 <label htmlFor="input-username">Username</label>
