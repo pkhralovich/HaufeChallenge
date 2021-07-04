@@ -9,6 +9,7 @@ import AuthService from '../../services/AuthService';
 import './SignupForm.css';
 import signupImage from '../../assets/images/form-header-2.png';
 import {addError, clearError} from '../../helpers/ui';
+import { pages } from "../../helpers/api"; 
 
 function SignupForm(props) {
     const history = useHistory();
@@ -52,7 +53,7 @@ function SignupForm(props) {
     function onSignupSuccess(response) {
         switch (response.status) {
             case 200: {
-                history.push("/login");
+                history.push(pages.LOGIN);
                 break;
             }
             case 400: {
@@ -99,7 +100,7 @@ function SignupForm(props) {
 
                 <button onClick={onClickSignup} type="button">Sign up</button>
             </form>
-            <Link className="link" to="/login">Already signed up?</Link>
+            <Link className="link" to={pages.LOGIN}>Already signed up?</Link>
         </div>
     )
 }

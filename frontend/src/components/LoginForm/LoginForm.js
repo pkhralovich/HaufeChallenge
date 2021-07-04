@@ -9,6 +9,7 @@ import AuthService from '../../services/AuthService';
 import './LoginForm.css';
 import loginImage from '../../assets/images/form-header.png';
 import {addError, clearError} from '../../helpers/ui';
+import { pages, setAuthorization } from "../../helpers/api";
 
 function LoginForm(props) {
     const history = useHistory();
@@ -38,8 +39,8 @@ function LoginForm(props) {
     function onLoginSuccess(response) {
         switch (response.status) {
             case 200: {
-                localStorage.setItem("token", response.data.token);
-                history.push("/characters");
+                setAuthorization(response.data.token);
+                history.push(pages.CHARACTERS);
                 break;
             }
             case 400: {
@@ -79,7 +80,7 @@ function LoginForm(props) {
 
                 <button onClick={onClickLogin} type="button">Login</button>
             </form>
-            <Link className="link" to="/signup">I don't have an account</Link>
+            <Link className="link" to={pages.SIGNUP}>I don't have an account</Link>
         </div>
     )
 }

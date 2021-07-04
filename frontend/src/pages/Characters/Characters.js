@@ -20,6 +20,7 @@ import UserService from "../../services/UserService";
 
 /*Others*/
 import "./Characters.css";
+import { pages } from "../../helpers/api";
 
 function Characters(props) {
     const history = useHistory();
@@ -29,7 +30,7 @@ function Characters(props) {
     /* Component state */
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(getPage());
-    const [pages, setPages] = useState({});
+    const [paginationInfo, setPages] = useState({});
 
     /* Redux state */
     const characters = useSelector((state) => state.characters.characters);
@@ -82,13 +83,13 @@ function Characters(props) {
     }
 
     function onCharactersError() {
-        history.push("/notFound");
+        history.push(pages.NOT_FOUND);
     }
 
     function redirectLogin() {
         clearUser();
         localStorage.clear();
-        history.push("/notFound");
+        history.push(pages.NOT_FOUND);
     }
 
     function moveNext() {
@@ -102,7 +103,7 @@ function Characters(props) {
     }
 
     useEffect(() => {
-        history.push("/characters?page=" + currentPage);
+        history.push(pages.CHARACTERS + "?page=" + currentPage);
         serviceCharacters.get(currentPage, onCharactersSuccess, onCharactersError);
     }, [currentPage]);
 
@@ -135,13 +136,13 @@ function Characters(props) {
     }
 
     function renderPagination() {
-        if (!pages || !currentPage || loading) return null;
+        if (!paginationInfo || !currentPage || loading) return null;
 
         let buttonNext = null;
-        if (pages.next) buttonNext = <button onClick={moveNext}>Next</button>
+        if (paginationInfo.next) buttonNext = <button onClick={moveNext}>Next</button>
 
         let buttonPrev = null;
-        if (pages.prev) buttonPrev = <button onClick={movePrev}>Prev</button>
+        if (paginationInfo.prev) buttonPrev = <button onClick={movePrev}>Prev</button>
 
         return (
             <div className="pagination">

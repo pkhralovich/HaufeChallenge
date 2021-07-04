@@ -19,15 +19,16 @@ import store from './state/store.js';
 
 /*Others*/
 import './assets/index.css';
+import { pages } from './helpers/api';
 
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
       <Router>
         <Switch>
-          <Route exact path={["/", "/login"]} render={(props) => (<Login {...props} showLogin={true}/>)}/>
-          <Route path="/signup" render={(props) => (<Login {...props} showLogin={false}/>)} />
-          <Route path="/characters" component={Characters} />
+          <Route exact path={[pages.BASE, pages.LOGIN]} render={(props) => (<Login {...props} showLogin={true}/>)}/>
+          <Route path={pages.SIGNUP} render={(props) => (<Login {...props} showLogin={false}/>)} />
+          <Route path={pages.CHARACTERS} component={Characters} />
           <Route component={NotFound}/>
         </Switch>
       </Router>

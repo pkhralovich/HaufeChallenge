@@ -9,6 +9,7 @@ import { clearUser } from '../../state/reducers/user';
 /*Other*/
 import "./Navbar.css";
 import icon from "../../assets/images/icon.svg";
+import { pages } from "../../helpers/api";
 
 function Navbar() {
     const history = useHistory();
@@ -19,7 +20,7 @@ function Navbar() {
     function onClickLogout() {
         dispatch(clearUser());
         localStorage.clear();
-        history.push("/login");
+        history.push(pages.LOGIN);
     }
 
     function renderLogout() {
@@ -35,7 +36,7 @@ function Navbar() {
 
     return (
         <nav className="navbar">
-            <a className="nav-item nav-clickable home" href="https://rickandmortyapi.com/">
+            <a className="nav-item nav-clickable home" href={pages.BASE}>
                 <img src={icon} alt="Rick and Morty logos"/>
                 <p>Rick & Morty</p>
             </a>

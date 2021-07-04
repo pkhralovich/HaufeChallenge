@@ -7,12 +7,24 @@ export const endpoints = {
     UNLIKE_CHARACTER : (favId) => "/character/favourite/"+favId
 };
 
+export const pages = {
+    BASE : "/",
+    LOGIN : "/login",
+    SIGNUP : "/signup",
+    CHARACTERS : "/characters" ,
+    NOT_FOUND : "/notFound"
+}
+
 export function getAuthorization() {
     return "Bearer " + localStorage.getItem("token");
 }
 
-export function setAuthorization() {
-    localStorage.setItem("token");
+export function isAuthorized() {
+    return localStorage.getItem("token");
+}
+
+export function setAuthorization(token) {
+    localStorage.setItem("token", token);
 }
 
 export function getEndpoint(path) {

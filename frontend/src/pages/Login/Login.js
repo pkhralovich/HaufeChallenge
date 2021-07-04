@@ -9,6 +9,7 @@ import SignupForm from "../../components/SignupForm/SignupForm.js";
 
 /* Others */
 import './Login.css';
+import { pages, isAuthorized } from "../../helpers/api";
 
 function App(props) {
   const history = useHistory();
@@ -22,7 +23,7 @@ function App(props) {
   }
   
   useEffect(() => {
-    if (localStorage.getItem("token")) history.push("/characters");
+    if (isAuthorized()) history.push(pages.CHARACTERS);
   });
 
   return (
