@@ -95,6 +95,7 @@ The approximate time spent to develop the entire system was:
 The limitations that I found are:
 
  - Horizontal responsiveness
+ - Missing alerts on conflict/authorization/other errors in Characters list/detail
  - Token storage system
  - Refresh token system
  - Testing is not implemented
@@ -104,6 +105,7 @@ The limitations that I found are:
 ## Future work
 Some of the improvements that can be made are related to the known limitations already listed. Some proposals to improve the system are:
 
+ - Improve de UI to alert user on authentication, conflict or not found errors in the API
  - Improve de JWT system security
  - Implement backend testing with Mocha or some similar framework.
  - Implement frontend testing with Cypress or some similar framework.
