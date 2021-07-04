@@ -12,7 +12,7 @@ import unknownIcon from '../../assets/images/unknown.svg';
 
 /* Redux */
 import { useSelector, useDispatch } from "react-redux";
-import { selectCharacter } from "../../services/reducers/characters";
+import { selectCharacter, setFavourite } from "../../services/reducers/characters";
 
 /* Others */
 import "./Character.css";
@@ -50,14 +50,33 @@ function CharacterDetail() {
         else addFav(character.id);
     }
 
+    function onFavSuccess(response) {
+        if (response.status === 200) {
+            setFav(response.data.id);
+        }
+    }
+
+    function onUnfavSuccess(response) {
+        if (response.status === 200) {
+            setFav(undefined);
+        }
+    }
+
+    function setFav(favId) {
+        dispatch(
+            setFavourite({
+                id: character.id,
+                favourite: favId
+            })
+        );
+    }
+
     function addFav(characterId) {
-        //TODO: Update redux state
-        service.like(characterId);
+        service.like(characterId, onFavSuccess);
     }
 
     function removeFav(favId) {
-        //TODO: Update redux state
-        service.unlike(favId);
+        service.unlike(favId, onUnfavSuccess);
     }
 
     function onClickClose() {

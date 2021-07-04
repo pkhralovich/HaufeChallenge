@@ -52,7 +52,8 @@ async function remove(req, res) {
                     id: favouriteId 
                 }
             });
-            if (record) res.status(200).send(record.toJSON());
+
+            if (record) res.status(200).send();
             else res.status(404).send();
         } else res.status(401).send();
     } catch (error) {

@@ -12,10 +12,19 @@ export const charactersSlice = createSlice({
         },
         setCharacters: (state, action) => {
             state.characters = action.payload;
+        },
+        setFavourite: (state, action) => {
+            let character = state.characters.find(character => character.id === action.payload.id);
+            if (character) {
+                character.favourite = action.payload.favourite;
+                if (character.id === state.selectedCharacter.id) {
+                    state.selectedCharacter = character;
+                }
+            }
         }
     }
 });
 
-export const { selectCharacter, setCharacters } = charactersSlice.actions;
+export const { selectCharacter, setCharacters, setFavourite } = charactersSlice.actions;
 
 export default charactersSlice.reducer;

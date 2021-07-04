@@ -38,7 +38,7 @@ async function getCharacters(req, res) {
                 });
 
                 //Retrieves information about favourites from BBDD
-                let records = await Favourite.findByIds(ids);
+                let records = await Favourite.findByCharacter(ids);
 
                 //Add favourites information to result
                 records.forEach(record => {

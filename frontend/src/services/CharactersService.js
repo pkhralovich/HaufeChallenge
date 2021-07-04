@@ -46,13 +46,13 @@ export default class CharactersService {
     
     unlike(favourite, onSuccess, onError) {
         axios({
-            method: "post",
-            url: this.getEndpoint("/characters/favourite/:id"),
-            params: {
-                favourite
-            },
+            method: "delete",
+            url: this.getEndpoint("/character/favourite/"+favourite),
             validateStatus: function(status) {
                 return status === 200 ||  status === 401 || status === 404;
+            },
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
             }
         })
         .then(onSuccess)

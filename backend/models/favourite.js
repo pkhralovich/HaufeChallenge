@@ -23,10 +23,10 @@ const Favourite = sequelize.define("Favourite", {
     createdAt: false
 });
 
-Favourite.findByIds = function(ids) {
+Favourite.findByCharacter = function(ids) {
     return this.findAll({
         where: {
-            id: ids
+            character: ids
         }
     });
 }
