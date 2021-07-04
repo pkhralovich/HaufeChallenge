@@ -22,13 +22,13 @@ The steps that should be followed are:
  6. Navigate inside the "frontend". Check that the values inside `src/services/config.js` are consistent with the port and host of the backend and run `npm install`.
  7. Run the command `npm start`. 
 
-**Backend env file example**
-`PORT = 3001`
-`DB_HOST = localhost`
-`DB_NAME = haufe`
-`DB_USER = haufe`
-`DB_PASS = haufe1234`
-`SECRET = mostsecurekeyintheworld`
+**Backend env file example** <br>
+`PORT = 3001`<br>
+`DB_HOST = localhost` <br>
+`DB_NAME = haufe` <br>
+`DB_USER = haufe` <br>
+`DB_PASS = haufe1234` <br>
+`SECRET = mostsecurekeyintheworld` <br>
 
 ## Database
 Event thought in the interview I was told that the organization works with MERN stack, in my opinion the given requirements are most easy to fullfill with an SQL database. 
