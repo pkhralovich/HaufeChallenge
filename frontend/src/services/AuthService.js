@@ -1,19 +1,12 @@
 import axios from "axios";
 
-import config from "./config";
+import { getEndpoint, endpoints } from "../helpers/api";
 
 export default class UserService {
-    getEndpoint(path) {
-        let endpoint = "http://" + config.api_host + ":" + config.api_port;
-        if (path) endpoint += path;
-
-        return endpoint;
-    }
-
     login(credentials, onSuccess, onError) {
         axios({
             method: "post",
-            url: this.getEndpoint("/user/login"),
+            url: getEndpoint(endpoints.LOGIN),
             data: credentials,
             validateStatus: function(status) {
                 return status === 200 ||  status === 400 || status === 401;
@@ -26,7 +19,7 @@ export default class UserService {
     signup(data, onSuccess, onError) {
         axios({
             method: "post",
-            url: this.getEndpoint("/user"),
+            url: getEndpoint(endpoints.SIGNUP),
             data: data,
             validateStatus: function(status) {
                 return status === 200 || status === 400 || status === 409;

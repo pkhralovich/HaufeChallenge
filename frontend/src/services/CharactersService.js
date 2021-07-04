@@ -1,19 +1,12 @@
 import axios from "axios";
 
-import config from "./config";
+import { getEndpoint, endpoints, getAuthorization } from "../helpers/api";
 
 export default class CharactersService {
-    getEndpoint(path) {
-        let endpoint = "http://" + config.api_host + ":" + config.api_port;
-        if (path) endpoint += path;
-
-        return endpoint;
-    }
-
     get(page, onSuccess, onError) {
         axios({
             method: "get",
-            url: this.getEndpoint("/characters"),
+            url: getEndpoint(endpoints.GET_CHARACTERS),
             params: {
                 page
             },
@@ -21,7 +14,7 @@ export default class CharactersService {
                 return status === 200 ||  status === 401;
             },
             headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: getAuthorization()
             }
         })
         .then(onSuccess)
@@ -31,12 +24,12 @@ export default class CharactersService {
     like(character, onSuccess, onError) {
         axios({
             method: "post",
-            url: this.getEndpoint("/character/" + character + "/favourite"),
+            url: getEndpoint(endpoints.LIKE_CHARACTER(character)),
             validateStatus: function(status) {
                 return status === 200 ||  status === 401 || status === 409;
             },
             headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: getAuthorization()
             }
         })
         .then(onSuccess)
@@ -47,12 +40,12 @@ export default class CharactersService {
     unlike(favourite, onSuccess, onError) {
         axios({
             method: "delete",
-            url: this.getEndpoint("/character/favourite/"+favourite),
+            url: getEndpoint(endpoints.UNLIKE_CHARACTER(favourite)),
             validateStatus: function(status) {
                 return status === 200 ||  status === 401 || status === 404;
             },
             headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: getAuthorization()
             }
         })
         .then(onSuccess)

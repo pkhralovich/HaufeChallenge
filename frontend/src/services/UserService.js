@@ -1,24 +1,17 @@
 import axios from "axios";
 
-import config from "./config";
+import { getEndpoint, endpoints, getAuthorization } from "../helpers/api";
 
 export default class CharactersService {
-    getEndpoint(path) {
-        let endpoint = "http://" + config.api_host + ":" + config.api_port;
-        if (path) endpoint += path;
-
-        return endpoint;
-    }
-
     get(onSuccess, onError) {
         axios({
             method: "get",
-            url: this.getEndpoint("/user"),
+            url: getEndpoint(endpoints.GET_USER),
             validateStatus: function(status) {
                 return status === 200 ||  status === 401;
             },
             headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
+                Authorization: getAuthorization()
             }
         })
         .then(onSuccess)
