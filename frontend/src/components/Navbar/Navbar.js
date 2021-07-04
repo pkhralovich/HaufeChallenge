@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 /* Redux */
 import { useSelector, useDispatch } from "react-redux";
-import { clearUser } from '../../services/reducers/user';
+import { clearUser } from '../../state/reducers/user';
 
 /*Other*/
 import "./Navbar.css";

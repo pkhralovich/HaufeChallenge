@@ -52,7 +52,8 @@ Inside the "src" folder of the frontend, we can find the following folders:
  - **Components:** contains the components organized by folders. Each component has its own CSS file.
  - **Helpers:** contains a file with some UI helper methods.
  - **Pages:** contains the pages available in the system.
- - **Services:** contains some HTTP services, the API config and also the Redux files.
+ - **Services:** contains some HTTP services, the API config.
+ - **State:** contains the files related with Redux.
 
 
 
@@ -86,7 +87,7 @@ The approximate time spent to develop the entire system was:
  - **June 25th | 4 hours:** check the requirements, make some design decisions, configure the environment and start defining the style.
  - **June 26th | 2 hours:** development of the signup and login form.
  - **July 1st | 4 hours:** development of the rest of the views (characters list, not found and character detail)
- -  **July 2nd | 8 hours:** creation of the Github repo, development of the API calls, add favourite indicators and pagination to the frontend. Finally, add the business logic to the frontend.
+ - **July 2nd | 8 hours:** creation of the Github repo, development of the API calls, add favourite indicators and pagination to the frontend. Finally, add the business logic to the frontend.
  - **July 4th | 4 hours**: add responsiveness, apply Redux, fix some bugs and improve the interaction with the favourite button.
 
 **Total time spent: 22 hours** 
@@ -96,6 +97,7 @@ The limitations that I found are:
 
  - Horizontal responsiveness
  - Missing alerts on conflict/authorization/other errors in Characters list/detail
+ - Missing loading on signup/login
  - Token storage system
  - Refresh token system
  - Testing is not implemented
@@ -107,6 +109,7 @@ Some of the improvements that can be made are related to the known limitations a
 
  - Improve de UI to alert user on authentication, conflict or not found errors in the API
  - Improve de JWT system security
+ - Implement a loading for the signup/login process.
  - Implement backend testing with Mocha or some similar framework.
  - Implement frontend testing with Cypress or some similar framework.
  - Store the data in our database and create a scheduled process that retrieves and updates the characters data.

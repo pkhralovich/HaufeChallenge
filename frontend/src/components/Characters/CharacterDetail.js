@@ -12,7 +12,7 @@ import unknownIcon from '../../assets/images/unknown.svg';
 
 /* Redux */
 import { useSelector, useDispatch } from "react-redux";
-import { selectCharacter, setFavourite } from "../../services/reducers/characters";
+import { selectCharacter, setFavourite } from "../../state/reducers/characters";
 
 /* Others */
 import "./Character.css";

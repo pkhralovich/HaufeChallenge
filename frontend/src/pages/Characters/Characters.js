@@ -11,8 +11,8 @@ import Loading from "../../components/Loading/Loading.js";
 
 /* Redux */
 import { useSelector, useDispatch } from "react-redux";
-import { setUser, clearUser } from "../../services/reducers/user";
-import { setCharacters } from "../../services/reducers/characters";
+import { setUser, clearUser } from "../../state/reducers/user";
+import { setCharacters } from "../../state/reducers/characters";
 
 /*Services*/
 import CharactersService from "../../services/CharactersService";

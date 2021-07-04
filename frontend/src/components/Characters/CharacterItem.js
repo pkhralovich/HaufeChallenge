@@ -2,7 +2,7 @@ import React from 'react';
 
 /* Redux */
 import { useDispatch } from "react-redux";
-import { selectCharacter } from "../../services/reducers/characters";
+import { selectCharacter } from "../../state/reducers/characters";
 
 /* Others */
 import "./Character.css";
