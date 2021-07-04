@@ -18,9 +18,13 @@ The steps that should be followed are:
  2. Clone the repo in your local system
  3. Navigate inside the "backend" folder and run `npm install`.
  4. Create a .env file in the folder. You can find an example just below ot this list.
- 5. Run the command `node server.js` and check that the server is able to connect to the database.
- 6. Navigate inside the "frontend". Check that the values inside `src/services/config.js` are consistent with the port and host of the backend and run `npm install`.
- 7. Run the command `npm start`. 
+ 5. Create a MySQL username with the values that you used in the .env file.
+ 6. Execute the SQL script in `backend/db_schema.sql`
+ 7. Run the command `node server.js` and check that the server is able to connect to the database.
+ 8. Navigate inside the "frontend" and run `npm install`.
+ 9. Create a .env file in the folder. You can find an example just below ot this list.
+ 10. Run the command `npm start`. 
+ 11. Navigate to the URL and port of your frontend an create a user in the signup screen
 
 **Backend env file example** <br>
 `PORT = 3001`<br>
@@ -29,6 +33,11 @@ The steps that should be followed are:
 `DB_USER = haufe` <br>
 `DB_PASS = haufe1234` <br>
 `SECRET = mostsecurekeyintheworld` <br>
+
+**Frontend env file example** <br>
+`REACT_APP_API_HOST = localhost`<br>
+`REACT_APP_API_PORT = 3001`<br>
+`REACT_APP_API_PROTOCOL = http`<br>
 
 ## Database
 Event thought in the interview I was told that the organization works with MERN stack, in my opinion the given requirements are most easy to fullfill with an SQL database. 
