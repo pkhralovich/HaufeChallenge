@@ -58,7 +58,21 @@ async function login(req, res) {
     }
 }
 
+async function get(req, res) {
+    try {
+        if (req.user) {
+            let user = await User.findByPk(req.user.id);
+            if (user) res.status(200).send(user.toJSON());
+            else res.status(401).send();
+        } else res.status(401).send();
+        
+    } catch(error) {
+        response.unhandledError(error, res);
+    }
+}
+
 module.exports = {
     create,
-    login
+    login,
+    get
 }

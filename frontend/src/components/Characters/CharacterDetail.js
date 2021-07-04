@@ -1,3 +1,4 @@
+/*External or react libraries*/
 import React from 'react';
 
 /*Services*/
@@ -9,12 +10,19 @@ import aliveIcon from '../../assets/images/alive.svg';
 import deadIcon from '../../assets/images/dead.svg';
 import unknownIcon from '../../assets/images/unknown.svg';
 
+/* Redux */
+import { useSelector, useDispatch } from "react-redux";
+import { selectCharacter } from "../../services/reducers/characters";
+
 /* Others */
 import "./Character.css";
 import "./CharacterDetail.css";
 
-function CharacterDetail(props) {
+function CharacterDetail() {
+    const dispatch = useDispatch();
     const service = new CharactersService();
+
+    const character = useSelector((state) => state.characters.selectedCharacter);
 
     const CHAR_STATUS = {
         ALIVE: "ALIVE",
@@ -38,46 +46,52 @@ function CharacterDetail(props) {
     }
 
     function toggleFav() {
-        if (props.character.favourite) removeFav(props.character.favourite);
-        else addFav(props.character.id);
+        if (character.favourite) removeFav(character.favourite);
+        else addFav(character.id);
     }
 
     function addFav(characterId) {
+        //TODO: Update redux state
         service.like(characterId);
     }
 
     function removeFav(favId) {
+        //TODO: Update redux state
         service.unlike(favId);
+    }
+
+    function onClickClose() {
+        dispatch(selectCharacter(undefined));
     }
 
     return (
         <div className="detail-container">
             <div className="detail-content center-absolute">
-                <img className="close-button" src={closeIcon} onClick={props.onClickClose} alt="Close button"></img>
-                <img className="avatar" src={props.character.image} alt={props.character.name + " image"}></img>
+                <img className="close-button" src={closeIcon} onClick={onClickClose} alt="Close button"></img>
+                <img className="avatar" src={character.image} alt={character.name + " image"}></img>
                 <div className="detail-info">
-                    <p className="character-name">{props.character.name}</p>
+                    <p className="character-name">{character.name}</p>
                     
                     <p className="character-label">Status:</p>
                     <div className="character-status">
-                        <p className="character-value">{props.character.status}</p>
-                        <img src={getStatusIcon(props.character.status)} alt="Fav indicator"/>
+                        <p className="character-value">{character.status}</p>
+                        <img src={getStatusIcon(character.status)} alt="Fav indicator"/>
                     </div>
                     
                     <p className="character-label">Variety:</p>
-                    <p className="character-value">{props.character.species}</p>
+                    <p className="character-value">{character.species}</p>
 
                     <p className="character-label">Gender:</p>
-                    <p className="character-value">{props.character.gender}</p>
+                    <p className="character-value">{character.gender}</p>
 
                     <p className="character-label">First known location:</p>
-                    <p className="character-value">{props.character.origin}</p>
+                    <p className="character-value">{character.origin}</p>
                     
                     <p className="character-label">Last known location:</p>
-                    <p className="character-value">{props.character.location}</p>
+                    <p className="character-value">{character.location}</p>
 
                     <button className="like-button" onClick={toggleFav}>
-                        {getFavouriteText(props.character.favourite)}
+                        {getFavouriteText(character.favourite)}
                     </button>
                 </div>
             </div>

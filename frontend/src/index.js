@@ -15,7 +15,7 @@ import NotFound from './pages/NotFound/NotFound.js';
 import Characters from './pages/Characters/Characters.js';
 
 /*State*/
-import store from './services/State';
+import store from './services/store.js';
 
 /*Others*/
 import './assets/index.css';
