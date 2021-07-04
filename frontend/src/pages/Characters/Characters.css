@@ -1,8 +1,8 @@
 .characters-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-row-gap: var(--spacing-medium);
-    grid-column-gap: var(--spacing-medium);
+    grid-column-gap: var(--spacing-small);
 
     padding: var(--spacing-large);
     justify-content: center;
@@ -21,10 +21,23 @@
 .pagination button {
     width: auto;
     border-radius: 25%;
+    font-size: var(--font-xsmall);
 }
 
 .pagination p {
     margin-left: var(--spacing-medium);
     margin-right: var(--spacing-medium);
     font-weight: bolder;
- }
+}
+
+@media screen and (max-width: 1200px) {
+    .characters-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .characters-list {
+        grid-template-columns: 1fr;
+    }
+}

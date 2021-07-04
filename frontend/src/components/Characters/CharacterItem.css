@@ -4,8 +4,8 @@
     border-radius: 8px;
 
     position: relative;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
 
     cursor: pointer;
 }
@@ -17,12 +17,12 @@
 .character-info {
     padding: var(--spacing-small) var(--spacing-medium);
     align-self: center;
-    flex-grow: 1;
 }
 
 .character-item .avatar {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .character-item .fav-icon {
@@ -32,4 +32,11 @@
 
     width: 32px;
     height: 32px;
+}
+
+@media screen and (max-width: 576px) {
+    .character-item .fav-icon {
+        width: 24px;
+        height: 24px;
+    }
 }

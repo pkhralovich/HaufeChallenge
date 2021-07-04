@@ -26,7 +26,7 @@
     color: var(--font-color);
 }
 
-.nav-clickable:hover {
+.nav-clickable:hover, .nav-clickable:active {
     border-bottom: 2px solid var(--accent-color);
     transition: border-color .2s;
 }
@@ -37,4 +37,20 @@
 
 .navbar .home > img {
     margin-right: var(--spacing-small);
+
+    width: 38px;
+    height: 38px;
+}
+
+@media screen and (max-width: 576px) {
+    .navbar .home > img {
+        margin-right: var(--spacing-medium);
+
+        width: 32px;
+        height: 32px;
+    }
+
+    #username {
+        display: none;
+    }
 }

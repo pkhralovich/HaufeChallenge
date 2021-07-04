@@ -29,3 +29,10 @@
     display: flex;
     flex-direction: column;
 }
+
+@media screen and (max-width: 576px) {
+    .signup-container > img {
+        width: 100px;
+        height: 100px;
+    }
+}

@@ -11,6 +11,7 @@
   --font-color-hint: #a3a3a3;
   --font-family: "Source Sans Pro",Sans-serif;
   
+  --font-xsmall: 12px;
   --font-small: 16px;
   --font-medium: 20px;
   --font-large: 30px;
@@ -39,10 +40,11 @@ p {
 }
 
 input {
-  width: calc(100% - 12px);
-  padding: 10px 5px;
+  width: calc(100% - var(--spacing-small) - 2px);
+  padding: var(--spacing-small) calc(var(--spacing-small) / 2);
 
   border: 1px solid var(--font-color-hint);
+  border-radius: 4px;
 
   font-size: var(--font-small);
   font-family: var(--font-family);
@@ -87,10 +89,12 @@ button {
   color: #fff;
   background-color: var(--accent-color);
   border: 2px solid var(--accent-color);
+  border-radius: 4px;
   
   cursor: pointer;
   text-transform: uppercase;
   font-weight: bold;
+  font-size: var(--font-xsmall);
 }
 
 .link {
@@ -132,4 +136,44 @@ button:hover {
 .flex-row {
   display: flex;
   flex-direction: row;
+}
+
+@media screen and (max-width: 1200px) {
+  :root {
+    --font-xsmall: 12px;
+    --font-small: 16px;
+    --font-medium: 20px;
+    --font-large: 26px;
+
+    --spacing-small: 10px;
+    --spacing-medium: 15px;
+    --spacing-large: 25px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 576px) {
+  :root {
+    --font-xsmall: 10px;
+    --font-small: 12px;
+    --font-medium: 14px;
+    --font-large: 18px;
+
+    --spacing-small: 5px;
+    --spacing-medium: 10px;
+    --spacing-large: 15px;
+  }
+
+  input {
+    border-radius: 2px;
+  }
+
+  button {
+    border-radius: 2px;
+  }
 }

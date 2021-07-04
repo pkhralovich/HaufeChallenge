@@ -18,7 +18,7 @@ function Navbar() {
                 <img src={icon} alt="Rick and Morty logos"/>
                 <p>Rick & Morty</p>
             </a>
-            <div className="nav-item">Pavel Khralovich</div>
+            <div id="username" className="nav-item">Pavel Khralovich</div>
             <div className="nav-spacing"></div>
             <div className="nav-item nav-clickable" onClick={onClickLogout}>
                 <p> Logout </p>

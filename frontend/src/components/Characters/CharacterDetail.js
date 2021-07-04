@@ -47,7 +47,7 @@ function CharacterDetail(props) {
     }
 
     function removeFav(favId) {
-        service.unline(favId);
+        service.unlike(favId);
     }
 
     return (
@@ -76,7 +76,7 @@ function CharacterDetail(props) {
                     <p className="character-label">Last known location:</p>
                     <p className="character-value">{props.character.location}</p>
 
-                    <button class="like-button" onClick={toggleFav}>
+                    <button className="like-button" onClick={toggleFav}>
                         {getFavouriteText(props.character.favourite)}
                     </button>
                 </div>
