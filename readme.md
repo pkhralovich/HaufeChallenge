@@ -38,6 +38,7 @@ The steps that should be followed are:
 `REACT_APP_API_HOST = localhost`<br>
 `REACT_APP_API_PORT = 3001`<br>
 `REACT_APP_API_PROTOCOL = http`<br>
+`PORT = 3000`<br>
 
 ## Database
 Event thought in the interview I was told that the organization works with MERN stack, in my opinion the given requirements are most easy to fullfill with an SQL database. 
@@ -97,7 +98,7 @@ The approximate time spent to develop the entire system was:
  - **June 26th | 2 hours:** development of the signup and login form.
  - **July 1st | 4 hours:** development of the rest of the views (characters list, not found and character detail)
  - **July 2nd | 8 hours:** creation of the Github repo, development of the API calls, add favourite indicators and pagination to the frontend. Finally, add the business logic to the frontend.
- - **July 4th | 4 hours**: add responsiveness, apply Redux, fix some bugs and improve the interaction with the favourite button.
+ - **July 4th | 5 hours**: add responsiveness, apply Redux, fix some bugs and improve the interaction with the favourite button.
 
 **Total time spent: 22 hours** 
 
