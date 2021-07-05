@@ -100,7 +100,7 @@ The approximate time spent to develop the entire system was:
  - **July 2nd | 8 hours:** creation of the Github repo, development of the API calls, add favourite indicators and pagination to the frontend. Finally, add the business logic to the frontend.
  - **July 4th | 5 hours**: add responsiveness, apply Redux, fix some bugs and improve the interaction with the favourite button.
 
-**Total time spent: 22 hours** 
+**Total time spent: 23 hours** 
 
 ## Known limitations
 The limitations that I found are:
